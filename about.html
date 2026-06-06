@@ -75,6 +75,8 @@
         }
         [data-clip-reveal] { clip-path: inset(0 100% 0 0); transition: clip-path 1s cubic-bezier(0.16,1,0.3,1); }
         [data-clip-reveal].is-clipped { clip-path: inset(0 0% 0 0); }
+        .division-img-wrap, .division-img-wrap img { min-height: 240px !important; }
+        @media (min-width: 1024px) { .division-img-wrap, .division-img-wrap img { min-height: 380px !important; } }
     </style>
 </head>
 <body class="bg-white">
@@ -103,7 +105,7 @@
                 <img src="images/refinery_hero.png" alt="" class="w-full h-full object-cover" loading="eager"/>
                 <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,25,41,0.5) 0%, rgba(10,25,41,0.92) 100%);"></div>
             </div>
-            <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-20 pb-16 pt-32">
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-20 pb-12 pt-20 md:pt-32">
                 <span class="text-secondary font-bold text-xs uppercase tracking-[0.25em] block mb-4">Our Company</span>
                 <h1 data-word-reveal class="font-display font-bold text-white leading-tight mb-5" style="font-size:clamp(2.5rem,6vw,5rem);">About &<br>Infrastructure</h1>
                 <p class="text-white/55 text-lg max-w-xl leading-relaxed">
@@ -113,16 +115,16 @@
         </section>
 
         <!-- ── Vision & Mission ── -->
-        <section class="py-24 bg-white">
+        <section class="py-14 md:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-5 md:px-20">
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div data-reveal class="bg-[#F7F8FA] p-10">
+                    <div data-reveal class="bg-[#F7F8FA] p-6 md:p-10">
                         <span class="text-secondary font-bold text-[10px] uppercase tracking-[0.25em] block mb-4">Our Vision</span>
                         <p class="font-display font-bold text-on-surface text-2xl leading-snug">
                             To be a globally connected multi-disciplinary company offering quality services timely and safely.
                         </p>
                     </div>
-                    <div data-reveal data-delay="100" class="bg-primary p-10">
+                    <div data-reveal data-delay="100" class="bg-primary p-6 md:p-10">
                         <span class="text-white/50 font-bold text-[10px] uppercase tracking-[0.25em] block mb-4">Our Mission</span>
                         <p class="font-display font-bold text-white text-2xl leading-snug">
                             To provide personalised reliable solutions to our valued clients in a safe environment.
@@ -133,9 +135,9 @@
         </section>
 
         <!-- ── Oil & Gas Division ── -->
-        <section class="py-28 bg-[#F7F8FA]">
+        <section class="py-16 md:py-28 bg-[#F7F8FA]">
             <div class="max-w-7xl mx-auto px-5 md:px-20">
-                <div class="grid lg:grid-cols-2 gap-16 items-stretch">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-stretch">
                     <div class="flex flex-col justify-center">
                         <span data-reveal class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-4">Division Overview</span>
                         <h2 data-word-reveal class="font-display font-bold text-on-surface leading-tight mb-6" style="font-size:clamp(1.75rem,3.5vw,2.75rem);">Oil & Gas Division<br>& Logistics</h2>
@@ -158,15 +160,15 @@
                             </div>
                         </div>
                     </div>
-                    <div data-reveal data-delay="100" class="overflow-hidden" style="min-height: 380px; box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
-                        <img src="images/fleet_logistics.png" alt="Keren Petroleum tanker fleet" class="w-full h-full object-cover" style="min-height: 380px; filter: grayscale(80%) contrast(1.1);"/>
+                    <div data-reveal data-delay="100" class="division-img-wrap overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.1);">
+                        <img src="images/fleet_logistics.png" alt="Keren Petroleum tanker fleet" class="w-full h-full object-cover" style="filter: grayscale(80%) contrast(1.1);"/>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ── Governance ── -->
-        <section class="py-28 bg-[#0A1929]">
+        <section class="py-16 md:py-28 bg-[#0A1929]">
             <div class="max-w-7xl mx-auto px-5 md:px-20">
                 <div class="max-w-xl mb-16" data-reveal>
                     <span class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-4">Governance</span>
@@ -201,7 +203,7 @@
         </section>
 
         <!-- ── Leadership ── -->
-        <section class="py-28 bg-white">
+        <section class="py-16 md:py-28 bg-white">
             <div class="max-w-7xl mx-auto px-5 md:px-20">
                 <div class="max-w-xl mb-16" data-reveal>
                     <span class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-4">Leadership</span>
@@ -239,7 +241,7 @@
         </section>
     </main>
 
-    <footer class="bg-[#0A1929] text-white py-20">
+    <footer class="bg-[#0A1929] text-white py-12 md:py-20">
         <div class="max-w-7xl mx-auto px-5 md:px-20">
             <div class="grid md:grid-cols-4 gap-12 mb-16">
                 <div class="md:col-span-2">

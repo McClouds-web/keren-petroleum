@@ -35,7 +35,7 @@ function initMobileNav() {
             <span class="w-6 h-0.5 bg-on-surface transition-all duration-300 origin-center"></span>
             <span class="w-6 h-0.5 bg-on-surface transition-all duration-300"></span>
             <span class="w-6 h-0.5 bg-on-surface transition-all duration-300 origin-center"></span>`;
-        nav.appendChild(mobBtn);
+        nav.querySelector('div').appendChild(mobBtn);
     }
 
     let mobDrawer = document.getElementById('mobile-drawer');
@@ -139,7 +139,7 @@ function initQuoteModal() {
                 <p class="text-xs font-bold text-secondary uppercase tracking-[0.2em] mb-2">Keren Petroleum</p>
                 <h3 class="text-2xl font-bold font-display text-on-surface mb-6">Request a Supply Quote</h3>
                 <form id="modal-quote-form" class="space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid sm:grid-cols-2 gap-4">
                         <div class="space-y-1">
                             <label class="text-xs font-bold uppercase tracking-widest text-on-surface/50">Full Name</label>
                             <input type="text" required placeholder="John Doe" class="w-full border border-gray-200 focus:border-primary focus:ring-0 px-4 py-3 text-sm bg-white text-on-surface outline-none transition-colors">
@@ -153,7 +153,7 @@ function initQuoteModal() {
                         <label class="text-xs font-bold uppercase tracking-widest text-on-surface/50">Company</label>
                         <input type="text" required placeholder="Acme Corp" class="w-full border border-gray-200 focus:border-primary focus:ring-0 px-4 py-3 text-sm bg-white text-on-surface outline-none transition-colors">
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid sm:grid-cols-2 gap-4">
                         <div class="space-y-1">
                             <label class="text-xs font-bold uppercase tracking-widest text-on-surface/50">Fuel Product</label>
                             <select required class="w-full border border-gray-200 focus:border-primary focus:ring-0 px-4 py-3 text-sm bg-white text-on-surface outline-none transition-colors">
