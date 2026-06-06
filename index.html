@@ -109,6 +109,17 @@
         }
         [data-clip-reveal].is-clipped { clip-path: inset(0 0% 0 0); }
 
+        /* On mobile the clip-path hides content but keeps layout space → blank gap.
+           Show the element immediately; animation only runs on desktop. */
+        @media (max-width: 1023px) {
+            [data-clip-reveal] {
+                clip-path: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+
         /* ── Card bottom accent ── */
         .svc-card { position: relative; overflow: hidden; }
         .svc-card::after {
@@ -309,6 +320,110 @@
             </div>
         </section>
 
+        <!-- ── Fuel Products ── -->
+        <section class="py-16 md:py-28 bg-[#0A1929]">
+            <div class="max-w-7xl mx-auto px-5 md:px-20">
+                <div class="max-w-xl mb-14" data-reveal>
+                    <span class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-4">Product Range</span>
+                    <h2 data-word-reveal class="font-display font-bold text-white leading-tight" style="font-size:clamp(2rem,4vw,3rem);">Petroleum Products We Supply</h2>
+                    <p class="text-white/40 mt-4 leading-relaxed">Authorized downstream distributor supplying industrial, commercial, and aviation-grade fuel products across Southern Africa — procured directly via our UAE refinery mandate.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px" style="background:rgba(255,255,255,0.06);">
+                    <div data-reveal class="bg-[#0A1929] p-8 flex flex-col gap-5 hover:bg-primary/10 transition-colors duration-300">
+                        <div class="w-10 h-10 bg-primary flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white" style="font-size:20px;">local_gas_station</span>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-1">Diesel</div>
+                            <h3 class="font-display font-bold text-2xl text-white">50ppm</h3>
+                        </div>
+                        <p class="text-white/40 text-sm leading-relaxed flex-1">Low-sulfur diesel meeting Euro 5 equivalence. Preferred for mining fleets, heavy transport, and generator sets requiring strict emission compliance.</p>
+                        <div class="pt-5 border-t text-xs font-bold uppercase tracking-widest text-white/20" style="border-color:rgba(255,255,255,0.06);">Mining · Transport · Industrial</div>
+                    </div>
+                    <div data-reveal data-delay="100" class="bg-[#0A1929] p-8 flex flex-col gap-5 hover:bg-primary/10 transition-colors duration-300">
+                        <div class="w-10 h-10 bg-primary flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white" style="font-size:20px;">local_gas_station</span>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-1">Diesel</div>
+                            <h3 class="font-display font-bold text-2xl text-white">500ppm</h3>
+                        </div>
+                        <p class="text-white/40 text-sm leading-relaxed flex-1">High-performance diesel for heavy machinery, construction equipment, and large-scale generator operations where volume and reliability are non-negotiable.</p>
+                        <div class="pt-5 border-t text-xs font-bold uppercase tracking-widest text-white/20" style="border-color:rgba(255,255,255,0.06);">Construction · Power Gen · Heavy Machinery</div>
+                    </div>
+                    <div data-reveal data-delay="200" class="bg-[#0A1929] p-8 flex flex-col gap-5 hover:bg-primary/10 transition-colors duration-300">
+                        <div class="w-10 h-10 flex items-center justify-center" style="background:#EF5B2D;">
+                            <span class="material-symbols-outlined text-white" style="font-size:20px;">oil_barrel</span>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-1">Heavy Fuel Oil</div>
+                            <h3 class="font-display font-bold text-2xl text-white">HFO</h3>
+                        </div>
+                        <p class="text-white/40 text-sm leading-relaxed flex-1">Marine-grade and industrial heavy fuel oil for vessels, power stations, and large boiler systems requiring high-volume, cost-efficient energy output.</p>
+                        <div class="pt-5 border-t text-xs font-bold uppercase tracking-widest text-white/20" style="border-color:rgba(255,255,255,0.06);">Marine · Power Stations · Boilers</div>
+                    </div>
+                    <div data-reveal data-delay="300" class="bg-[#0A1929] p-8 flex flex-col gap-5 hover:bg-primary/10 transition-colors duration-300">
+                        <div class="w-10 h-10 bg-white/10 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white" style="font-size:20px;">flight</span>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary mb-1">Aviation Fuel</div>
+                            <h3 class="font-display font-bold text-2xl text-white">Jet A-1</h3>
+                        </div>
+                        <p class="text-white/40 text-sm leading-relaxed flex-1">International-standard aviation turbine fuel for commercial airline, charter, and cargo operations. Supplied in compliance with Def Stan 91-091 specifications.</p>
+                        <div class="pt-5 border-t text-xs font-bold uppercase tracking-widest text-white/20" style="border-color:rgba(255,255,255,0.06);">Aviation · Cargo · Charter</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Why Keren ── -->
+        <section class="py-16 md:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-5 md:px-20">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div data-reveal>
+                        <span class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-4">Our Advantage</span>
+                        <h2 data-word-reveal class="font-display font-bold text-on-surface leading-tight mb-6" style="font-size:clamp(2rem,4vw,3rem);">Why Leading Operators Choose Keren</h2>
+                        <p class="text-on-surface/50 leading-relaxed mb-6">We are not a volume reseller. We are a dedicated energy partner — relationship-driven, safety-obsessed, and built for the operational complexity of African resource environments.</p>
+                        <blockquote class="border-l-2 border-primary pl-5 py-1">
+                            <p class="text-on-surface font-display font-bold text-lg leading-snug">"We sit on the same side as our clients — seeking solutions to challenging issues, irrespective of short-term profitability."</p>
+                            <cite class="block mt-3 text-xs font-bold uppercase tracking-widest text-on-surface/30 not-italic">Keren Petroleum — Company Charter</cite>
+                        </blockquote>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div data-reveal class="p-6 bg-[#F7F8FA]">
+                            <div class="w-10 h-10 bg-primary/8 flex items-center justify-center mb-4" style="background:rgba(19,117,188,0.08);">
+                                <span class="material-symbols-outlined text-primary" style="font-size:20px;">verified_user</span>
+                            </div>
+                            <h4 class="font-display font-bold text-on-surface mb-2 uppercase tracking-tight">Safety as Culture</h4>
+                            <p class="text-on-surface/50 text-sm leading-relaxed">Safety is not an act. It is transmitted top-to-bottom as a lifestyle across every operation — before work begins and throughout delivery.</p>
+                        </div>
+                        <div data-reveal data-delay="100" class="p-6 bg-[#F7F8FA]">
+                            <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(19,117,188,0.08);">
+                                <span class="material-symbols-outlined text-primary" style="font-size:20px;">handshake</span>
+                            </div>
+                            <h4 class="font-display font-bold text-on-surface mb-2 uppercase tracking-tight">Personalized Service</h4>
+                            <p class="text-on-surface/50 text-sm leading-relaxed">A tailored approach to every client relationship, enabling rapid response and quality service where large distributors cannot flex.</p>
+                        </div>
+                        <div data-reveal data-delay="200" class="p-6 bg-[#F7F8FA]">
+                            <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(19,117,188,0.08);">
+                                <span class="material-symbols-outlined text-primary" style="font-size:20px;">savings</span>
+                            </div>
+                            <h4 class="font-display font-bold text-on-surface mb-2 uppercase tracking-tight">Cost Efficiency</h4>
+                            <p class="text-on-surface/50 text-sm leading-relaxed">Optimized supply chain coordination reduces cost-per-litre without compromising on delivery standards or product quality.</p>
+                        </div>
+                        <div data-reveal data-delay="300" class="p-6 bg-[#F7F8FA]">
+                            <div class="w-10 h-10 flex items-center justify-center mb-4" style="background:rgba(19,117,188,0.08);">
+                                <span class="material-symbols-outlined text-primary" style="font-size:20px;">military_tech</span>
+                            </div>
+                            <h4 class="font-display font-bold text-on-surface mb-2 uppercase tracking-tight">20+ Years Experience</h4>
+                            <p class="text-on-surface/50 text-sm leading-relaxed">Seasoned leadership with over two decades in oil & gas, infrastructure development, and pan-African trade operations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ── Network Section ── -->
         <section class="py-16 md:py-28 bg-[#F7F8FA]">
             <div class="max-w-7xl mx-auto px-5 md:px-20">
@@ -328,8 +443,86 @@
                             </a>
                         </div>
                     </div>
-                    <div data-clip-reveal class="overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.12);">
-                        <img src="images/harbor_map.png" alt="Southern Africa logistics map" class="w-full h-72 lg:h-96 object-cover grayscale" style="filter: grayscale(100%) contrast(1.1);"/>
+                    <div class="hidden lg:block overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.12);">
+                        <img src="images/harbor_map.png" alt="Southern Africa logistics map" class="w-full h-96 object-cover grayscale" style="filter: grayscale(100%) contrast(1.1);"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Industries ── -->
+        <section class="py-16 md:py-28 bg-[#F7F8FA]">
+            <div class="max-w-7xl mx-auto px-5 md:px-20">
+                <div class="max-w-xl mb-14" data-reveal>
+                    <span class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-4">Sectors Served</span>
+                    <h2 data-word-reveal class="font-display font-bold text-on-surface leading-tight" style="font-size:clamp(2rem,4vw,3rem);">Industries We Power</h2>
+                    <p class="text-on-surface/50 mt-4 leading-relaxed">From underground mines to commercial airports — we supply critical energy where Africa works hardest.</p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div data-reveal class="bg-white p-6 flex flex-col items-center text-center gap-3 hover:bg-primary hover:text-white group transition-colors duration-300" style="box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" style="font-size:32px;">diamond</span>
+                        <span class="font-display font-bold text-on-surface text-sm uppercase tracking-wide group-hover:text-white transition-colors">Mining</span>
+                    </div>
+                    <div data-reveal data-delay="50" class="bg-white p-6 flex flex-col items-center text-center gap-3 hover:bg-primary group transition-colors duration-300" style="box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" style="font-size:32px;">engineering</span>
+                        <span class="font-display font-bold text-on-surface text-sm uppercase tracking-wide group-hover:text-white transition-colors">Construction</span>
+                    </div>
+                    <div data-reveal data-delay="100" class="bg-white p-6 flex flex-col items-center text-center gap-3 hover:bg-primary group transition-colors duration-300" style="box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" style="font-size:32px;">local_shipping</span>
+                        <span class="font-display font-bold text-on-surface text-sm uppercase tracking-wide group-hover:text-white transition-colors">Transport</span>
+                    </div>
+                    <div data-reveal data-delay="150" class="bg-white p-6 flex flex-col items-center text-center gap-3 hover:bg-primary group transition-colors duration-300" style="box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" style="font-size:32px;">flight</span>
+                        <span class="font-display font-bold text-on-surface text-sm uppercase tracking-wide group-hover:text-white transition-colors">Aviation</span>
+                    </div>
+                    <div data-reveal data-delay="200" class="bg-white p-6 flex flex-col items-center text-center gap-3 hover:bg-primary group transition-colors duration-300" style="box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" style="font-size:32px;">directions_boat</span>
+                        <span class="font-display font-bold text-on-surface text-sm uppercase tracking-wide group-hover:text-white transition-colors">Marine</span>
+                    </div>
+                    <div data-reveal data-delay="250" class="bg-white p-6 flex flex-col items-center text-center gap-3 hover:bg-primary group transition-colors duration-300" style="box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white transition-colors" style="font-size:32px;">bolt</span>
+                        <span class="font-display font-bold text-on-surface text-sm uppercase tracking-wide group-hover:text-white transition-colors">Power Gen</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── HSSE Commitment ── -->
+        <section class="py-16 md:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-5 md:px-20">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+                    <div data-reveal>
+                        <span class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-4">HSSE Standard</span>
+                        <h2 class="font-display font-bold text-on-surface leading-tight mb-6" style="font-size:clamp(2rem,4vw,3rem);">Safety Is Not an Act.<br>It Is a Culture.</h2>
+                        <p class="text-on-surface/50 leading-relaxed mb-5">Keren Petroleum adheres to the highest standards of Health, Safety, Security, and Environment. Our HSSE culture is established before every operation begins — transmitted from leadership to every team member as a way of life, not a compliance checkbox.</p>
+                        <p class="text-on-surface/50 leading-relaxed mb-8">This commitment ensures the well-being of our employees, partners, clients, communities, and stakeholders across all our operations in South Africa, Zambia, and Botswana.</p>
+                        <div class="flex items-center gap-4 p-5 bg-[#F7F8FA]">
+                            <div class="w-10 h-10 bg-primary flex-shrink-0 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-white" style="font-size:18px;">verified</span>
+                            </div>
+                            <div>
+                                <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface/30 mb-0.5">Governance Structure</div>
+                                <div class="font-display font-bold text-on-surface text-sm">Board-level HSSE &amp; Ethics Committee</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-0">
+                        <div data-reveal class="border-l-2 border-gray-100 pl-6 py-5 hover:border-primary transition-colors duration-300 group">
+                            <h4 class="font-display font-bold text-on-surface uppercase tracking-tight mb-2 group-hover:text-primary transition-colors">Audit Committee</h4>
+                            <p class="text-on-surface/50 text-sm leading-relaxed">Independent audit of accounting, financial reporting, and HSSE policy adoption aligned with international best practices and group standards.</p>
+                        </div>
+                        <div data-reveal data-delay="100" class="border-l-2 border-gray-100 pl-6 py-5 hover:border-primary transition-colors duration-300 group">
+                            <h4 class="font-display font-bold text-on-surface uppercase tracking-tight mb-2 group-hover:text-primary transition-colors">HSSE &amp; Ethics Committee</h4>
+                            <p class="text-on-surface/50 text-sm leading-relaxed">Board sub-committee reviewing new HSSE standards and recommending policies that enforce safety best practices across all divisions and operating countries.</p>
+                        </div>
+                        <div data-reveal data-delay="200" class="border-l-2 border-gray-100 pl-6 py-5 hover:border-primary transition-colors duration-300 group">
+                            <h4 class="font-display font-bold text-on-surface uppercase tracking-tight mb-2 group-hover:text-primary transition-colors">Board of Directors</h4>
+                            <p class="text-on-surface/50 text-sm leading-relaxed">Senior oversight across all operations. The board appoints Management Committees for each subsidiary and sets working instructions, powers of attorney, and employment terms.</p>
+                        </div>
+                        <div data-reveal data-delay="300" class="border-l-2 border-gray-100 pl-6 py-5 hover:border-primary transition-colors duration-300 group">
+                            <h4 class="font-display font-bold text-on-surface uppercase tracking-tight mb-2 group-hover:text-primary transition-colors">International Standards</h4>
+                            <p class="text-on-surface/50 text-sm leading-relaxed">All operations conducted in accordance with global best practices, meeting or exceeding client expectations and international industry certification requirements.</p>
+                        </div>
                     </div>
                 </div>
             </div>
