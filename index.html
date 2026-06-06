@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Keren Petroleum | Save Energy Costs, Secure the Future</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#1375BC',
+              secondary: '#EF5B2D',
+              'on-surface': '#1a1c1c',
+              'on-surface-variant': '#404751',
+              'outline-variant': '#c0c7d3',
+              'surface-container-low': '#f3f3f3',
+              'on-primary': '#ffffff',
+              'on-secondary': '#ffffff',
+              'primary-fixed': '#d1e4ff',
+              'secondary-container': '#EF5B2D',
+            },
+            fontFamily: {
+              display: ['Barlow Condensed', 'sans-serif'],
+              sans: ['Barlow', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        * { border-radius: 0 !important; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Barlow', sans-serif; color: #1a1c1c; overflow-x: hidden; }
+        h1,h2,h3,h4,h5 { font-family: 'Barlow Condensed', sans-serif; }
+
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+        /* ── Scroll reveal ── */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+        }
+        [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+        [data-reveal][data-delay="100"] { transition-delay: 100ms; }
+        [data-reveal][data-delay="200"] { transition-delay: 200ms; }
+        [data-reveal][data-delay="300"] { transition-delay: 300ms; }
+        [data-reveal][data-delay="400"] { transition-delay: 400ms; }
+        @media (prefers-reduced-motion: reduce) {
+            [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+        }
+
+        /* ── Hero load animation ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-anim-1 { animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both; }
+        .hero-anim-2 { animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
+        .hero-anim-3 { animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.45s both; }
+        .hero-anim-4 { animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.6s both; }
+
+        /* ── Nav ── */
+        #main-nav { transition: box-shadow 0.3s ease, background 0.3s ease; }
+        #main-nav.nav-scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+        /* ── Service card hover ── */
+        .svc-card { transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(19,117,188,0.12); }
+
+        /* ── Stat number ── */
+        .stat-num { font-variant-numeric: tabular-nums; }
+
+        /* ── Scroll indicator ── */
+        @keyframes scrollDown {
+            0%   { transform: translateY(0); opacity: 0.6; }
+            60%  { transform: translateY(10px); opacity: 1; }
+            100% { transform: translateY(0); opacity: 0.6; }
+        }
+        .scroll-dot { animation: scrollDown 1.8s ease-in-out infinite; }
+
+        /* ── Scroll progress bar ── */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; z-index: 300;
+            background: #EF5B2D; width: 0%; pointer-events: none;
+        }
+
+        /* ── Word-by-word reveal ── */
+        .word-unit {
+            display: inline-block;
+            opacity: 0; transform: translateY(16px); filter: blur(5px);
+            transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1),
+                        transform 0.55s cubic-bezier(0.16,1,0.3,1),
+                        filter 0.55s cubic-bezier(0.16,1,0.3,1);
+        }
+        .word-unit.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+        @media (prefers-reduced-motion: reduce) {
+            .word-unit { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+        }
+
+        /* ── Clip-path image wipe ── */
+        [data-clip-reveal] {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1s cubic-bezier(0.16,1,0.3,1);
+        }
+        [data-clip-reveal].is-clipped { clip-path: inset(0 0% 0 0); }
+
+        /* ── Card bottom accent ── */
+        .svc-card { position: relative; overflow: hidden; }
+        .svc-card::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            height: 3px; width: 0; background: #1375BC;
+            transition: width 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .svc-card:hover::after { width: 100%; }
+
+        /* ── Marquee ticker ── */
+        @keyframes marquee-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        .marquee-inner {
+            display: flex; align-items: center; width: max-content;
+            animation: marquee-scroll 28s linear infinite;
+        }
+        @media (prefers-reduced-motion: reduce) { .marquee-inner { animation: none; } }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- ── Navigation ── -->
+    <nav id="main-nav" class="sticky top-0 w-full z-50 bg-white">
+        <div class="max-w-7xl mx-auto px-5 md:px-20 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center select-none">
+                <img src="images/logo.png" alt="Keren Petroleum" class="h-11" style="width:auto;">
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-semibold text-primary transition-colors">Home</a>
+                <a href="about.html" class="text-sm font-semibold text-on-surface/60 hover:text-primary transition-colors">About</a>
+                <a href="values.html" class="text-sm font-semibold text-on-surface/60 hover:text-primary transition-colors">Values</a>
+                <a href="contact.html" class="text-sm font-semibold text-on-surface/60 hover:text-primary transition-colors">Contact</a>
+                <button class="bg-secondary text-white font-bold text-sm px-6 py-3 hover:bg-[#C44420] transition-colors cursor-pointer quote-trigger uppercase tracking-wide">
+                    Get a Quote
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ── Hero ── -->
+        <section class="relative min-h-screen flex items-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img id="hero-bg" src="images/refinery_hero.png" alt="" class="w-full h-full object-cover" loading="eager"/>
+                <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(10,25,41,0.96) 0%, rgba(10,25,41,0.85) 45%, rgba(10,25,41,0.4) 100%);"></div>
+            </div>
+
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-20 pt-10 pb-24">
+                <div class="max-w-2xl">
+                    <span class="hero-anim-1 inline-block text-secondary font-bold text-xs uppercase tracking-[0.25em] mb-6">
+                        Indigenous Energy Solutions Leader
+                    </span>
+                    <h1 class="hero-anim-2 font-display font-bold text-white leading-[1.04] tracking-tight mb-6" style="font-size: clamp(2.5rem, 6vw, 5rem);">
+                        Save Energy Costs,<br>Secure the Future.
+                    </h1>
+                    <p class="hero-anim-3 text-white/65 text-lg leading-relaxed max-w-lg mb-10">
+                        Keren Petroleum delivers downstream oil & gas distribution, transport logistics, trade financing, and infrastructure across Southern Africa.
+                    </p>
+                    <div class="hero-anim-4 flex flex-wrap gap-4">
+                        <button class="bg-secondary text-white font-bold text-sm px-8 py-4 hover:bg-[#C44420] transition-colors cursor-pointer quote-trigger uppercase tracking-wide">
+                            Request a Supply Quote
+                        </button>
+                        <a href="about.html" class="border border-white/30 text-white font-bold text-sm px-8 py-4 hover:bg-white/10 transition-colors uppercase tracking-wide">
+                            Our Divisions
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- scroll cue -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+                <span class="text-white/30 text-[10px] uppercase tracking-[0.2em]">Scroll</span>
+                <div class="scroll-dot w-1 h-1 bg-white/50" style="border-radius:50% !important;"></div>
+            </div>
+        </section>
+
+        <!-- ── Stats ── -->
+        <section class="bg-[#0A1929] py-20">
+            <div class="max-w-7xl mx-auto px-5 md:px-20">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                    <div data-reveal class="text-center">
+                        <div class="stat-num font-display font-bold text-white mb-2" style="font-size:3rem;" data-count="4">0</div>
+                        <div class="text-white/40 text-xs font-semibold uppercase tracking-[0.18em]">Core Divisions</div>
+                    </div>
+                    <div data-reveal data-delay="100" class="text-center">
+                        <div class="stat-num font-display font-bold text-white mb-2" style="font-size:3rem;" data-count="3">0</div>
+                        <div class="text-white/40 text-xs font-semibold uppercase tracking-[0.18em]">Regional Hubs</div>
+                    </div>
+                    <div data-reveal data-delay="200" class="text-center">
+                        <div class="stat-num font-display font-bold text-white mb-2" style="font-size:3rem;" data-count="100%">0%</div>
+                        <div class="text-white/40 text-xs font-semibold uppercase tracking-[0.18em]">HSSE Compliant</div>
+                    </div>
+                    <div data-reveal data-delay="300" class="text-center">
+                        <div class="stat-num font-display font-bold text-white mb-2" style="font-size:3rem;">WFZ</div>
+                        <div class="text-white/40 text-xs font-semibold uppercase tracking-[0.18em]">Refinery Mandate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Marquee ticker ── -->
+        <div class="overflow-hidden bg-secondary py-3.5" aria-hidden="true">
+            <div class="marquee-inner">
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">South Africa</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">Botswana</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">Zambia</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">SADC Region</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">HSSE Certified</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">Wembley FZE Mandate</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">Downstream Distribution</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">South Africa</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">Botswana</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">Zambia</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">SADC Region</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">HSSE Certified</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">Wembley FZE Mandate</span>
+                <span class="text-white/40 text-xs">·</span>
+                <span class="px-8 text-white font-display font-bold text-xs uppercase tracking-[0.22em] whitespace-nowrap">Downstream Distribution</span>
+                <span class="text-white/40 text-xs">·</span>
+            </div>
+        </div>
+
+        <!-- ── Core Capabilities ── -->
+        <section class="py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-5 md:px-20">
+                <div class="max-w-xl mb-16" data-reveal>
+                    <span class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-4">What We Do</span>
+                    <h2 data-word-reveal class="font-display font-bold text-on-surface leading-tight" style="font-size:clamp(2rem,4vw,3rem);">Core Capabilities & Divisions</h2>
+                    <p class="text-on-surface/50 mt-4 leading-relaxed">
+                        A personalized approach delivering rapid response, quality services, and cost efficiency across Southern Africa.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div data-reveal class="svc-card bg-white p-8 flex flex-col" style="box-shadow: 0 4px 24px rgba(0,0,0,0.07);">
+                        <div class="w-12 h-12 bg-primary/8 flex items-center justify-center mb-6" style="background:rgba(19,117,188,0.07);">
+                            <span class="material-symbols-outlined text-primary" style="font-size:22px;">oil_barrel</span>
+                        </div>
+                        <h3 class="font-display font-bold text-base text-on-surface mb-3 uppercase tracking-tight">Oil & Gas</h3>
+                        <p class="text-on-surface/50 text-sm leading-relaxed flex-1">
+                            Acting as official mandate for UAE-based Wembley General Trading FZE for downstream procurement and distribution.
+                        </p>
+                        <a href="contact.html" class="mt-6 inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest hover:gap-3 transition-all duration-200">
+                            Request Supply <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div data-reveal data-delay="100" class="svc-card bg-white p-8 flex flex-col" style="box-shadow: 0 4px 24px rgba(0,0,0,0.07);">
+                        <div class="w-12 h-12 flex items-center justify-center mb-6" style="background:rgba(19,117,188,0.07);">
+                            <span class="material-symbols-outlined text-primary" style="font-size:22px;">local_shipping</span>
+                        </div>
+                        <h3 class="font-display font-bold text-base text-on-surface mb-3 uppercase tracking-tight">Transport Logistics</h3>
+                        <p class="text-on-surface/50 text-sm leading-relaxed flex-1">
+                            Managing safe and professional regional supply chain corridors ensuring reliable, timely delivery.
+                        </p>
+                        <a href="about.html" class="mt-6 inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest hover:gap-3 transition-all duration-200">
+                            View Logistics <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div data-reveal data-delay="200" class="svc-card bg-white p-8 flex flex-col" style="box-shadow: 0 4px 24px rgba(0,0,0,0.07);">
+                        <div class="w-12 h-12 flex items-center justify-center mb-6" style="background:rgba(19,117,188,0.07);">
+                            <span class="material-symbols-outlined text-primary" style="font-size:22px;">account_balance</span>
+                        </div>
+                        <h3 class="font-display font-bold text-base text-on-surface mb-3 uppercase tracking-tight">Trade Financing</h3>
+                        <p class="text-on-surface/50 text-sm leading-relaxed flex-1">
+                            Cost-efficient trading solutions and strategic financial cooperation to streamline secure operations.
+                        </p>
+                        <a href="about.html" class="mt-6 inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest hover:gap-3 transition-all duration-200">
+                            Financing Schemes <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+                        </a>
+                    </div>
+                    <div data-reveal data-delay="300" class="svc-card bg-white p-8 flex flex-col" style="box-shadow: 0 4px 24px rgba(0,0,0,0.07);">
+                        <div class="w-12 h-12 flex items-center justify-center mb-6" style="background:rgba(19,117,188,0.07);">
+                            <span class="material-symbols-outlined text-primary" style="font-size:22px;">construction</span>
+                        </div>
+                        <h3 class="font-display font-bold text-base text-on-surface mb-3 uppercase tracking-tight">Infrastructure</h3>
+                        <p class="text-on-surface/50 text-sm leading-relaxed flex-1">
+                            Developing long-term storage depots and facilities safely in accordance with international standards.
+                        </p>
+                        <a href="about.html" class="mt-6 inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest hover:gap-3 transition-all duration-200">
+                            Development Specs <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Network Section ── -->
+        <section class="py-28 bg-[#F7F8FA]">
+            <div class="max-w-7xl mx-auto px-5 md:px-20">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span data-reveal class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-4">Southern African Network</span>
+                        <h2 data-word-reveal class="font-display font-bold text-on-surface leading-tight mb-6" style="font-size:clamp(2rem,4vw,3rem);">Connecting Offices<br>to Operations</h2>
+                        <p data-reveal data-delay="200" class="text-on-surface/50 leading-relaxed mb-4">
+                            With our head office in Johannesburg, a branch and Oil Marketing Company in Lusaka, Zambia, and our Connect Corporate Office Suite in Gaborone, Botswana, we serve industries efficiently across the region.
+                        </p>
+                        <p data-reveal data-delay="200" class="text-on-surface/50 leading-relaxed mb-8">
+                            This regional footprint enables personalized customer satisfaction, rapid response, and optimized fuel supply chain coordination at a lower cost.
+                        </p>
+                        <div data-reveal data-delay="300">
+                            <a href="about.html" class="inline-block bg-primary text-white font-bold text-sm px-8 py-4 hover:bg-[#0F5A9C] transition-colors uppercase tracking-wide">
+                                Explore Our Presence
+                            </a>
+                        </div>
+                    </div>
+                    <div data-clip-reveal class="overflow-hidden" style="box-shadow: 0 24px 64px rgba(0,0,0,0.12);">
+                        <img src="images/harbor_map.png" alt="Southern Africa logistics map" class="w-full h-72 lg:h-96 object-cover grayscale" style="filter: grayscale(100%) contrast(1.1);"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CTA ── -->
+        <section class="bg-primary py-32 text-white">
+            <div class="max-w-3xl mx-auto px-5 text-center">
+                <h2 data-word-reveal class="font-display font-bold leading-tight mb-6" style="font-size:clamp(2rem,5vw,3.5rem);">Secure Your Fuel Supply Chain</h2>
+                <p data-reveal data-delay="100" class="text-white/55 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+                    Partner with an authorized regional energy provider. Connect with our procurement desk for high-volume contract pricing.
+                </p>
+                <div data-reveal data-delay="200" class="flex flex-wrap justify-center gap-4">
+                    <button class="bg-secondary text-white font-bold text-sm px-8 py-4 hover:bg-[#C44420] transition-colors cursor-pointer quote-trigger uppercase tracking-wide">
+                        Get a Bulk Quote
+                    </button>
+                    <a href="contact.html" class="border border-white/30 text-white font-bold text-sm px-8 py-4 hover:bg-white/10 transition-colors uppercase tracking-wide">
+                        Contact Procurement
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── Footer ── -->
+    <footer class="bg-[#0A1929] text-white py-20">
+        <div class="max-w-7xl mx-auto px-5 md:px-20">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="mb-4">
+                        <img src="images/logo.png" alt="Keren Petroleum" class="h-11" style="width:auto;">
+                    </div>
+                    <p class="text-white/40 leading-relaxed max-w-xs text-sm">
+                        Save Energy Costs, Secure the Future. Multi-disciplinary energy company powering progress across Southern Africa.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[10px] uppercase tracking-[0.22em] text-white/25 mb-5">Sitemap</h5>
+                    <div class="flex flex-col gap-3">
+                        <a href="index.html" class="text-white/55 text-sm hover:text-white transition-colors">Home</a>
+                        <a href="about.html" class="text-white/55 text-sm hover:text-white transition-colors">About</a>
+                        <a href="values.html" class="text-white/55 text-sm hover:text-white transition-colors">Values</a>
+                        <a href="contact.html" class="text-white/55 text-sm hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[10px] uppercase tracking-[0.22em] text-white/25 mb-5">Regional Hubs</h5>
+                    <div class="flex flex-col gap-3 text-white/55 text-sm">
+                        <span>South Africa</span>
+                        <span>Botswana</span>
+                        <span>Zambia</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8" style="border-top: 1px solid rgba(255,255,255,0.07);">
+                <p class="text-white/25 text-xs text-center">
+                    © 2026 Keren Petroleum. All rights reserved. Registered Energy Supplier.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+</body>
+</html>

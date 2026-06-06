@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact & Procurement | Keren Petroleum</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#1375BC',
+              secondary: '#EF5B2D',
+              'on-surface': '#1a1c1c',
+              'on-primary': '#ffffff',
+              'on-secondary': '#ffffff',
+            },
+            fontFamily: {
+              display: ['Barlow Condensed', 'sans-serif'],
+              sans: ['Barlow', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        * { border-radius: 0 !important; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Barlow', sans-serif; color: #1a1c1c; overflow-x: hidden; }
+        h1,h2,h3,h4,h5 { font-family: 'Barlow Condensed', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+
+        [data-reveal] {
+            opacity: 0; transform: translateY(36px);
+            transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+        }
+        [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+        [data-reveal][data-delay="100"] { transition-delay: 100ms; }
+        [data-reveal][data-delay="200"] { transition-delay: 200ms; }
+        [data-reveal][data-delay="300"] { transition-delay: 300ms; }
+        @media (prefers-reduced-motion: reduce) {
+            [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+        }
+
+        #main-nav { transition: box-shadow 0.3s ease; }
+        #main-nav.nav-scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+        /* Form inputs */
+        .form-input {
+            width: 100%;
+            border: 1px solid #e5e7eb;
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #1a1c1c;
+            background: #fff;
+            outline: none;
+            transition: border-color 0.2s ease;
+            font-family: 'Barlow', sans-serif;
+        }
+        .form-input:focus { border-color: #1375BC; }
+        .form-label {
+            display: block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(26,28,28,0.4);
+            margin-bottom: 6px;
+            font-family: 'Barlow Condensed', sans-serif;
+            transition: color 0.2s ease;
+        }
+        .form-field:focus-within .form-label { color: #1375BC; }
+
+        .contact-card { transition: background 0.25s ease; }
+        .contact-card:hover { background: #F0F4F8; }
+
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; z-index: 300;
+            background: #EF5B2D; width: 0%; pointer-events: none;
+        }
+        .word-unit {
+            display: inline-block;
+            opacity: 0; transform: translateY(16px); filter: blur(5px);
+            transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1),
+                        transform 0.55s cubic-bezier(0.16,1,0.3,1),
+                        filter 0.55s cubic-bezier(0.16,1,0.3,1);
+        }
+        .word-unit.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+        @media (prefers-reduced-motion: reduce) {
+            .word-unit { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <nav id="main-nav" class="sticky top-0 w-full z-50 bg-white">
+        <div class="max-w-7xl mx-auto px-5 md:px-20 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center select-none">
+                <img src="images/logo.png" alt="Keren Petroleum" class="h-11" style="width:auto;">
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="text-sm font-semibold text-on-surface/60 hover:text-primary transition-colors">Home</a>
+                <a href="about.html" class="text-sm font-semibold text-on-surface/60 hover:text-primary transition-colors">About</a>
+                <a href="values.html" class="text-sm font-semibold text-on-surface/60 hover:text-primary transition-colors">Values</a>
+                <a href="contact.html" class="text-sm font-semibold text-primary transition-colors">Contact</a>
+                <button class="bg-secondary text-white font-bold text-sm px-6 py-3 hover:bg-[#C44420] transition-colors cursor-pointer quote-trigger uppercase tracking-wide">
+                    Get a Quote
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- ── Hero ── -->
+        <section class="relative min-h-[55vh] flex items-end overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="images/refinery_hero.png" alt="" class="w-full h-full object-cover" loading="eager"/>
+                <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,25,41,0.5) 0%, rgba(10,25,41,0.92) 100%);"></div>
+            </div>
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-20 pb-16 pt-32">
+                <span class="text-secondary font-bold text-xs uppercase tracking-[0.25em] block mb-4">Procurement Hub</span>
+                <h1 data-word-reveal class="font-display font-bold text-white leading-tight" style="font-size:clamp(2.5rem,6vw,5rem);">Fuel Your Operations</h1>
+            </div>
+        </section>
+
+        <!-- ── Main Content ── -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-5 md:px-20">
+                <div class="grid lg:grid-cols-12 gap-12">
+
+                    <!-- Left: Contact details -->
+                    <div class="lg:col-span-5" data-reveal>
+                        <p class="text-on-surface/50 leading-relaxed mb-8 text-sm">
+                            We specialize in downstream oil and gas distribution, transport logistics, and trade financing across Southern Africa. Our local footprint ensures rapid response and safety compliance.
+                        </p>
+
+                        <div class="flex flex-col gap-3">
+                            <div class="contact-card flex items-start gap-4 p-5 bg-[#F7F8FA] cursor-pointer">
+                                <span class="material-symbols-outlined text-primary mt-0.5" style="font-size:20px;">corporate_fare</span>
+                                <div>
+                                    <h4 class="font-display font-bold text-xs uppercase tracking-[0.18em] text-on-surface mb-1">Head Office, South Africa</h4>
+                                    <p class="text-on-surface/50 text-sm">Johannesburg, South Africa</p>
+                                </div>
+                            </div>
+                            <div class="contact-card flex items-start gap-4 p-5 bg-[#F7F8FA] cursor-pointer">
+                                <span class="material-symbols-outlined text-primary mt-0.5" style="font-size:20px;">location_on</span>
+                                <div>
+                                    <h4 class="font-display font-bold text-xs uppercase tracking-[0.18em] text-on-surface mb-1">Corporate Suite, Botswana</h4>
+                                    <p class="text-on-surface/50 text-sm">Plot 50637 Block 10 Gaborone</p>
+                                    <p class="text-on-surface/50 text-sm">Unit S8/13, Connect Corporate Office Suite</p>
+                                    <p class="text-on-surface/50 text-sm">Remmogo Crossing</p>
+                                </div>
+                            </div>
+                            <div class="contact-card flex items-start gap-4 p-5 bg-[#F7F8FA] cursor-pointer">
+                                <span class="material-symbols-outlined text-primary mt-0.5" style="font-size:20px;">store</span>
+                                <div>
+                                    <h4 class="font-display font-bold text-xs uppercase tracking-[0.18em] text-on-surface mb-1">Branch / OMC, Zambia</h4>
+                                    <p class="text-on-surface/50 text-sm">Lusaka, Zambia</p>
+                                </div>
+                            </div>
+                            <div class="contact-card flex items-start gap-4 p-5 bg-[#F7F8FA] cursor-pointer">
+                                <span class="material-symbols-outlined text-primary mt-0.5" style="font-size:20px;">mail</span>
+                                <div>
+                                    <h4 class="font-display font-bold text-xs uppercase tracking-[0.18em] text-on-surface mb-1">Supply Inquiries</h4>
+                                    <p class="text-on-surface/50 text-sm">stanley@kerenpetroleum.co.bw</p>
+                                    <p class="text-on-surface/50 text-sm">+(267) 75512957 / 77562881</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trust badge -->
+                        <div class="mt-8 flex items-center gap-4 p-5" style="background: rgba(0,88,148,0.05);">
+                            <span class="material-symbols-outlined text-primary" style="font-size:24px;">verified</span>
+                            <div>
+                                <p class="font-display font-bold text-xs uppercase tracking-[0.18em] text-primary">Authorized Energy Supplier</p>
+                                <p class="text-on-surface/40 text-xs mt-0.5">Licensed & HSSE Compliant Operations</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Form -->
+                    <div class="lg:col-span-7" data-reveal data-delay="100">
+                        <div class="p-8 md:p-12 bg-white" style="box-shadow: 0 8px 48px rgba(0,0,0,0.09);">
+                            <span class="text-secondary font-bold text-xs uppercase tracking-[0.22em] block mb-2">Get in Touch</span>
+                            <h3 class="font-display font-bold text-on-surface text-2xl mb-8">Supply Request Form</h3>
+                            <form class="space-y-5" onsubmit="event.preventDefault(); alert('Request submitted successfully. Our team will contact you within 2 business hours.'); this.reset();">
+                                <div class="grid sm:grid-cols-2 gap-5">
+                                    <div class="form-field">
+                                        <label class="form-label">Full Name</label>
+                                        <input type="text" required placeholder="John Doe" class="form-input"/>
+                                    </div>
+                                    <div class="form-field">
+                                        <label class="form-label">Corporate Email</label>
+                                        <input type="email" required placeholder="j.doe@company.com" class="form-input"/>
+                                    </div>
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label">Company Name</label>
+                                    <input type="text" required placeholder="Industrial Solutions Ltd." class="form-input"/>
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label">Estimated Monthly Fuel Volume (Liters)</label>
+                                    <select required class="form-input" style="appearance:none; background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23404751' stroke-width='1.5' fill='none'/%3E%3C/svg%3E\"); background-repeat:no-repeat; background-position: right 16px center;">
+                                        <option value="" disabled selected>Select volume range</option>
+                                        <option>10,000 – 50,000 L</option>
+                                        <option>50,000 – 200,000 L</option>
+                                        <option>200,000 L +</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label">Message</label>
+                                    <textarea required rows="4" placeholder="Briefly describe your operational requirements..." class="form-input" style="resize:vertical;"></textarea>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <input type="checkbox" required id="compliance" class="mt-1 accent-primary"/>
+                                    <label for="compliance" class="text-on-surface/50 text-sm leading-relaxed cursor-pointer">
+                                        I agree to the <a href="values.html" class="text-primary font-semibold">Procurement Terms & Compliance</a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="w-full bg-secondary text-white font-bold text-sm py-5 hover:bg-[#C44420] transition-colors uppercase tracking-widest cursor-pointer">
+                                    Submit Request
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── CTA ── -->
+        <section class="bg-primary py-24 text-white">
+            <div class="max-w-3xl mx-auto px-5 text-center">
+                <h2 data-word-reveal class="font-display font-bold leading-tight mb-5" style="font-size:clamp(1.75rem,4vw,3rem);">Ready to Secure Your Supply Chain?</h2>
+                <p data-reveal data-delay="100" class="text-white/50 text-base max-w-lg mx-auto mb-8 leading-relaxed">
+                    Our procurement desk is ready to arrange high-volume contract pricing tailored to your operational needs.
+                </p>
+                <div data-reveal data-delay="200">
+                    <button class="bg-secondary text-white font-bold text-sm px-8 py-4 hover:bg-[#C44420] transition-colors cursor-pointer quote-trigger uppercase tracking-wide">
+                        Request a Quote Now
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#0A1929] text-white py-20">
+        <div class="max-w-7xl mx-auto px-5 md:px-20">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="mb-4">
+                        <img src="images/logo.png" alt="Keren Petroleum" class="h-11" style="width:auto;">
+                    </div>
+                    <p class="text-white/40 leading-relaxed max-w-xs text-sm">
+                        Save Energy Costs, Secure the Future. Multi-disciplinary energy company powering progress.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[10px] uppercase tracking-[0.22em] text-white/25 mb-5">Sitemap</h5>
+                    <div class="flex flex-col gap-3">
+                        <a href="index.html" class="text-white/55 text-sm hover:text-white transition-colors">Home</a>
+                        <a href="about.html" class="text-white/55 text-sm hover:text-white transition-colors">About</a>
+                        <a href="values.html" class="text-white/55 text-sm hover:text-white transition-colors">Values</a>
+                        <a href="contact.html" class="text-white/55 text-sm hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold text-[10px] uppercase tracking-[0.22em] text-white/25 mb-5">Regional Hubs</h5>
+                    <div class="flex flex-col gap-3 text-white/55 text-sm">
+                        <span>South Africa</span>
+                        <span>Botswana</span>
+                        <span>Zambia</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8" style="border-top: 1px solid rgba(255,255,255,0.07);">
+                <p class="text-white/25 text-xs text-center">© 2026 Keren Petroleum. All rights reserved. Registered Energy Supplier.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+</body>
+</html>
